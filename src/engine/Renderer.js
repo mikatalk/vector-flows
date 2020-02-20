@@ -4,14 +4,13 @@ export default class Renderer extends WebGLRenderer {
   constructor () {
     super ({
       antialias: true,
-      // antialias: false,
       alpha: true,
     })
 
     this.setClearColor(0, 0)
     this.setSize(this.windowWidth, this.windowHeight)
     this.setPixelRatio(window.devicePixelRatio)
-    this.shadowMap.enabled = false
+    this.shadowMap.enabled = true
 
     const gl = this.getContext()
     if (!gl.getExtension('OES_texture_float')) {

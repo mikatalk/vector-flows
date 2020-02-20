@@ -4,7 +4,7 @@
     <div class="canvas-container" ref="canvas-container"></div>
 
     <header>
-      <span class="prefix">f(x,y) = </span>
+      <span class="prefix">f(x,y,z) = </span>
       <span class="inputs-wrapper">
         <input 
           v-model="input1" 
@@ -13,6 +13,10 @@
         <input 
           v-model="input2" 
           :class="{'invalid':input2Func === null}"
+          type="text" />
+        <input 
+          v-model="input3" 
+          :class="{'invalid':input3Func === null}"
           type="text" />
       </span>
       <!-- <button
@@ -35,18 +39,25 @@ const noop = () => 0
 export default {
   name: 'App',
   data: () => ({
+    // input1: '0',
+    // input2: '0',
+    // input3: '0',
     // input1: 'x',
     // input2: 'y',
-    input1: 'sin(y)-cos(x)',
-    input2: 'sin(x)+sin(y)',
+    // input3: 'z',
+    input1: 'y*z',
+    input2: 'x*z',
+    input3: 'x*y',
     input1Func: noop,
     input2Func: noop,
+    input3Func: noop,
   }),
   mounted () {
       Stage.initialize(this.$refs['canvas-container'])
-      this.input1Func = evaluate(`f(x, y) = ${this.input1}`)
-      this.input2Func = evaluate(`f(x, y) = ${this.input2}`)
-      Stage.updateFunctions(this.input1Func, this.input2Func)
+      this.input1Func = evaluate(`f(x, y, z) = ${this.input1}`)
+      this.input2Func = evaluate(`f(x, y, z) = ${this.input2}`)
+      this.input3Func = evaluate(`f(x, y, z) = ${this.input3}`)
+      Stage.updateFunctions(this.input1Func, this.input2Func, this.input3Func)
   },
   beforeDestroy () {
     Stage.destroy()
@@ -57,7 +68,7 @@ export default {
       if (text === '') {
         this.input1Func = noop
       } else {
-        const input = `f(x, y) = ${text}`
+        const input = `f(x, y, z) = ${text}`
         try {
           this.input1Func = evaluate(input)
           this.sendToTracer()
@@ -71,7 +82,7 @@ export default {
       if (text === '') {
         this.input2Func = noop
       } else {
-        const input = `f(x, y) = ${text}`
+        const input = `f(x, y, z) = ${text}`
         try {
           this.input2Func = evaluate(input)
           this.sendToTracer()
@@ -79,12 +90,26 @@ export default {
           this.input2Func = null
         }
       }
+    },
+    input3 () {
+      const text = this.input3.trim().toLowerCase()
+      if (text === '') {
+        this.input3Func = noop
+      } else {
+        const input = `f(x, y, z) = ${text}`
+        try {
+          this.input3Func = evaluate(input)
+          this.sendToTracer()
+        } catch (error) {
+          this.input3Func = null
+        }
+      }
     }
   },
   methods: {
     sendToTracer () {
-      if (this.input1Func && this.input2Func) {
-        Stage.updateFunctions(this.input1Func, this.input2Func)
+      if (this.input1Func && this.input2Func && this.input3Func) {
+        Stage.updateFunctions(this.input1Func, this.input2Func, this.input3Func)
       }
     }
   }
