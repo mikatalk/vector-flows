@@ -194,7 +194,7 @@ export default class ParticleSystem extends Mesh {
       for (let x = 0; x < numberOfColumns; x += 1) {
         const res1 = op1(x - numberOfColumns/2, y - numberOfRows/2)
         const res2 = op2(x - numberOfColumns/2, y - numberOfRows/2)
-        angles[i] = Math.atan2(res2, res1)
+        angles[i] = Math.atan2(res1, res2)
         i += 1
       }
     }
