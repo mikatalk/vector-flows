@@ -12,7 +12,7 @@ new Vue({
  */
 const handleResize = () => {
   const width = window.innerWidth
-  const height = width * 1.2
+  const height = width * 1.1
   try {
     window.parent.postMessage({
       'event-type': 'iframe-content-resize',
