@@ -32,7 +32,7 @@
 <script>
 import Stage from './engine/Stage'
 
-import { evaluate } from 'mathjs'
+import /* webpackChunkName: "home" */ { evaluate } from 'mathjs'
 
 const noop = () => 0
 
@@ -45,9 +45,12 @@ export default {
     // input1: 'x',
     // input2: 'y',
     // input3: 'z',
-    input1: 'y*z',
-    input2: 'x*z',
-    input3: 'x*y',
+    // input1: 'y*z',
+    // input2: 'x*z',
+    // input3: 'x*y',
+    input1: 'cos(x*0.1)-sin(y*0.1) ',
+    input2: 'sin(x*0.1)+sin(y*0.1) ',
+    input3: 'sin(x*0.1)+sin(z*0.1) ',
     input1Func: noop,
     input2Func: noop,
     input3Func: noop,

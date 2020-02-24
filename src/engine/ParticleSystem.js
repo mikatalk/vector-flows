@@ -2,24 +2,24 @@ import { Mesh,
   InstancedBufferGeometry,
   InstancedBufferAttribute,
   TextureLoader,
-  RawShaderMaterial,
+  // RawShaderMaterial,
   Quaternion,
-  Uniform,
-  Color,
+  // Uniform,
+  // Color,
   FrontSide,
   Vector3,
   ConeBufferGeometry,
   NormalBlending,
-  AdditiveBlending,
+  // AdditiveBlending,
   Euler,
-  BoxBufferGeometry,
+  // BoxBufferGeometry,
   Matrix4,
   Vector4,
-  DoubleSide,
-  PlaneBufferGeometry,
-  TetrahedronBufferGeometry,
+  // DoubleSide,
+  // PlaneBufferGeometry,
+  // TetrahedronBufferGeometry,
   ShaderLib,
-  CustomBlending,
+  // CustomBlending,
   UniformsUtils,
   ShaderMaterial
 } from 'three'
@@ -27,6 +27,7 @@ import { Mesh,
 
 // const imageURI = "data:image/png;base64,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"
 const _q = new Quaternion()
+
 const vertexShader = textureSize => `
 #define PHONG
 varying vec3 vViewPosition;
@@ -73,7 +74,22 @@ void main() {
   vec3 transformed = position;
   
   // vColor = vec4(color, (1.0 + sin(transformed.z * 1000.0 + time)) / 2.0);
-  vColor = vec4(color, mod(time - gridXYZ.z / ${textureSize}.0, 1.0));
+  // float a = mod(time - gridXYZ.z / ${textureSize}.0, 1.0);
+  // if (a > 1.0 / ${textureSize}.0) {
+  //   a = 0.8;
+  // } else {
+  //   a = 1.0;
+  // }
+  // vColor = vec4(color, a);
+  // vColor = vec4(color, a);
+  vColor = vec4(
+    gridXYZ.x  / ${textureSize}.0,
+    0.3,
+    // gridXYZ.y  / ${textureSize}.0,
+    0.7,
+    // gridXYZ.z  / ${textureSize}.0,
+  0.6);
+  // a);
 
   transformed = applyQuaternionToVector(orientation, transformed);
   transformed += offset;
@@ -147,8 +163,11 @@ void main() {
   vec4 diffuseColor = vec4( diffuse, opacity );
   
   // diffuseColor = vec4(vColor.rgb,0.8);
+  // diffuseColor = vec4(vColor.rgb, vColor.a);
   // diffuseColor = vColor;
-  diffuseColor = vec4(vUv.xy,0.5, 0.6);
+  // diffuseColor = vec4(vUv.xy,0.5, vColor.a);
+  // diffuseColor = vec4(vUv.xy,0.5, 0.6);
+  diffuseColor = vColor;
 
 	ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
 	vec3 totalEmissiveRadiance = emissive;
@@ -185,43 +204,17 @@ export default class ParticleSystem extends Mesh {
 
   constructor (textureSize) {
 
-    // const radius = 50
-    // const numberOfParticles = textureSize * textureSize
-    // create an instanced buffer from a plane buffer geometry
-    
-    // const plane1 = new PlaneBufferGeometry(1, 1, 1, 1)
-    // const matrix = new Matrix4().makeRotationY(Math.PI/2)
-    // const plane2 = new PlaneBufferGeometry(1, 1, 1, 1)
-    // plane2.merge(plane1, matrix)
-
-    // // const arrow = new ArrowHelper(new Vector3(0,0,0), new Vector3(1,0,0), 1, 0xffff00)
     const geometry = new InstancedBufferGeometry()
-    // geometry.copy(new TetrahedronBufferGeometry(1, 0))
-    // geometry.copy(plane2)
-    // geometry.copy(new PlaneBufferGeometry(1, 1, 1, 1))
-    // geometry.copy(arrow.geometry)
-    geometry.copy(new ConeBufferGeometry(1, 8, 3))
-    // geometry.copy(new BoxBufferGeometry(0.5, 0.5, 0.5))
-    
-//     radius — Radius of the cone at the base. Default is 1.
-// height — Height of the cone. Default is 1.
-// radialSegments — Number of segmented faces around the circumference of the cone. Default is 8
-// heightSegments — Number of rows of faces along the height of the cone. Default is 1.
-// openEnded — A Boolean indicating whether the base of the cone is open or capped. Default is false, meaning capped.
-// thetaStart — Start angle for first segment, default = 0 (three o'clock position).
-// thetaLength — The central angle, often called theta, of the circular sector. The default is 2*Pi, which makes for a complete cone.
+    // geometry.copy(new ConeBufferGeometry(1, 8, 3))
+    geometry.copy(new ConeBufferGeometry(0.5, 4, 3))
 
-    // Add/generate attributes buffers for the geometry
     const offsets = []
     const orientations = []
-    // const mats = []
     const scales = []
     const indexes = []
     const colors = []
     const gridXYZs = []
     const lifetimes = []
-    // const spacing = 2
-    // const halfOffset = textureSize * spacing / 2
 
     const numberOfRows = textureSize
     const numberOfColumns = textureSize
@@ -297,12 +290,14 @@ export default class ParticleSystem extends Mesh {
       vertexShader: vertexShader(textureSize),
       fragmentShader: fragmentShader,
       side: FrontSide,
+      // side: DoubleSide,
       // fog: true,
       lights: true,
       // flatShading: true,
       name: 'phong-cones',
-      // blending: NormalBlending,
-      blending: CustomBlending,
+      frustumCulled: false,
+      blending: NormalBlending,
+      // blending: CustomBlending,
       transparent: true,
       alphaTest: 0.01,
       // wireframe: true,
@@ -338,27 +333,13 @@ export default class ParticleSystem extends Mesh {
           const res1 = op1(x - numberOfColumns/2, y - numberOfRows/2, z - numberOfBuckets/2)
           const res2 = op2(x - numberOfColumns/2, y - numberOfRows/2, z - numberOfBuckets/2)
           const res3 = op3(x - numberOfColumns/2, y - numberOfRows/2, z - numberOfBuckets/2)
-          
-          
-          
-          
-          const pitch = Math.sin(-res2);
-          const yaw = Math.atan2(res1, res3)
-          const tmpQ = new Quaternion()
-          const tmpQ1 = new Quaternion()
-          const tmpQ2 = new Quaternion()
-          const matrix = new Matrix4()
-          // matrix.makeRotationY(yaw)
-          // matrix.makeRotationX(pitch)
-          // tmpQ.setFromRotationMatrix(matrix).normalize()
-          tmpQ1.setFromAxisAngle(new Vector3(0,1,0), yaw).normalize()
-          tmpQ2.setFromAxisAngle(new Vector3(1,0,0), pitch).normalize()
-          tmpQ.multiplyQuaternions(tmpQ1, tmpQ2).normalize()
-          orientations[i4 + 0] = tmpQ.x
-          orientations[i4 + 1] = tmpQ.y
-          orientations[i4 + 2] = tmpQ.z
-          orientations[i4 + 3] = tmpQ.w
-
+          const pitch = Math.asin(res3);
+          const yaw = -Math.atan2(res1, res2)
+          _q.setFromEuler(new Euler(pitch, 0, yaw, 'XYZ'))
+          orientations[i4 + 0] = _q.x
+          orientations[i4 + 1] = _q.y
+          orientations[i4 + 2] = _q.z
+          orientations[i4 + 3] = _q.w
           i += 1
           i4 += 4
         }

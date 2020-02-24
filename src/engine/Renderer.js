@@ -3,7 +3,7 @@ import { WebGLRenderer } from 'three'
 export default class Renderer extends WebGLRenderer {
   constructor () {
     super ({
-      antialias: true,
+      antialias: !true,
       alpha: true,
     })
 

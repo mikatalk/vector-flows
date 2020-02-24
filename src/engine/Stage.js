@@ -1,4 +1,14 @@
-import { Clock, Scene, PerspectiveCamera, Mesh, BoxGeometry, MeshBasicMaterial, AxesHelper, AmbientLight, DirectionalLight, PointLight } from 'three'
+import { Clock,
+  Scene,
+  PerspectiveCamera,
+  // Mesh,
+  // BoxGeometry,
+  // MeshBasicMaterial,
+  // AxesHelper,
+  AmbientLight,
+  // DirectionalLight,
+  // PointLight
+} from 'three'
 import Renderer from './Renderer'
 import ParticleSystem from './ParticleSystem'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -41,12 +51,12 @@ export default class Stage {
     this.container.appendChild(this.renderer.domElement)
     
     this.camera = new PerspectiveCamera(
-      /* fov */    120,
+      /* fov */    20,
       /* aspect */ window.innerWidth / window.innerHeight,
       /* near */   0.001,
       /* far */    50000
     )
-    this.camera.position.set(0, 0, 100)
+    this.camera.position.set(0, 0, 500)
 
     this.scene = new Scene()
     this.scene.position.y = -20
@@ -106,7 +116,7 @@ export default class Stage {
   }
 
   createLights () {
-    const light = new AmbientLight(0xffffff, 0.7)
+    const light = new AmbientLight(0xffffff, 1)
     this.scene.add(light)
    
 // const light1 = new PointLight(0xff0000, 10, 200)
